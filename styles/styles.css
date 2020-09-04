@@ -1,0 +1,35 @@
+.rectangle {
+    width: 250px;
+    height: auto;
+    background: gray;
+    margin: auto;
+    border: 3px solid black;
+}
+
+.circle {
+    border-radius: 50%;
+    border: 3px solid black;
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.red {
+    background: red;
+}
+
+.yellow {
+    background: yellow;
+}
+
+.green {
+    background: green;
+}
+
+input {
+    background-color: grey;
+    border: 3px solid black;
+    font-size: 30px;
+}
