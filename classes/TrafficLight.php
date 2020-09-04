@@ -6,14 +6,8 @@ class TrafficLight
     public $red;
     public $yellow;
     public $green;
-    public $state;
 
-    public function __construct()
-    {
-        $this->state = isset($_GET['state']) ? $_GET['state'] : 1;
-    }
-
-    public function SetState($state)
+    public function setState($state)
     {
         switch ($state)
         {
@@ -42,6 +36,6 @@ class TrafficLight
                 break;
         }
 
-        $state
+        return ($state + 1) % 4;
     }
 }

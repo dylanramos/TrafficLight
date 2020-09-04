@@ -16,6 +16,11 @@
     margin-bottom: 5%;
 }
 
+.button {
+    display: flex;
+    justify-content: center;
+}
+
 .red {
     background: red;
 }
@@ -28,8 +33,6 @@
     background: green;
 }
 
-input {
-    background-color: grey;
-    border: 3px solid black;
-    font-size: 30px;
+.off {
+    background: gray;
 }
