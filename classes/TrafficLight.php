@@ -1,16 +1,22 @@
 <?php
 
-
 class TrafficLight
 {
     public $red;
     public $yellow;
     public $green;
+    public $paused;
+
+    public function __construct()
+    {
+        $this->paused = false;
+    }
 
     public function setState($state)
     {
         switch ($state)
         {
+            default:
             case 0:
                 $this->red = true;
                 $this->yellow = false;
@@ -36,6 +42,35 @@ class TrafficLight
                 break;
         }
 
-        return ($state + 1) % 4;
+        return $state;
+    }
+
+    public function setToPause($state)
+    {
+        switch ($state)
+        {
+            default:
+                $this->paused = false;
+
+            case 0:
+            case 2:
+                $this->paused = true;
+                break;
+        }
+    }
+
+    public function unPauseFeasible($state)
+    {
+        switch ($state)
+        {
+            default:
+                $unPauseFeasible = false;
+
+            case 0:
+                $unPauseFeasible = true;
+                break;
+        }
+
+        return $unPauseFeasible;
     }
 }

@@ -1,7 +1,11 @@
+body {
+    background-color: black;
+}
+
 .rectangle {
     width: 250px;
     height: auto;
-    background: gray;
+    background-color: black;
     margin: auto;
     border: 3px solid black;
 }
@@ -17,8 +21,11 @@
 }
 
 .button {
-    display: flex;
+    height: 30px;
+    width: 30px;
     justify-content: center;
+    border: 3px solid black;
+    background: black;
 }
 
 .red {

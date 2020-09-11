@@ -15,6 +15,10 @@ require_once "src/home.php";
         <div class="circle <?= $trafficLight->green ? 'green' : 'off' ?>"></div>
     </div>
     <div class="button">
-        <a href="index.php?state=<?= $nextState ?>">Next</a>
+        <a href="index.php?state=next">Next</a>
     </div>
+    <div class="button">
+        <a href="index.php?state=pause">Pause</a>
+    </div>
+</body>
 </html>
