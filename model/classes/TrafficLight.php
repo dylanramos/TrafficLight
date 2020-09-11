@@ -5,14 +5,15 @@ class TrafficLight
     public $red;
     public $yellow;
     public $green;
-    public $paused;
+    public $state;
 
     public function __construct()
     {
-        $this->paused = false;
+        $this->state = 0;
+        $this->set_state($this->state);
     }
 
-    public function setState($state)
+    public function set_state($state)
     {
         switch ($state)
         {
@@ -41,11 +42,9 @@ class TrafficLight
                 $this->green = false;
                 break;
         }
-
-        return $state;
     }
 
-    public function setToPause($state)
+    public function set_to_pause($state)
     {
         switch ($state)
         {
