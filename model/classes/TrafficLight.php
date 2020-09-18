@@ -44,6 +44,11 @@ class TrafficLight
                 $this->yellow = LightStates::ON;
                 $this->green = LightStates::OFF;
                 break;
+
+            case 4:
+                $this->red = LightStates::OFF;
+                $this->yellow = LightStates::BLINK;
+                $this->green = LightStates::OFF;
         }
     }
 
@@ -65,6 +70,19 @@ class TrafficLight
                 $this->set_state(0);
                 break;
             default: // don't change
+        }
+    }
+
+    public function can_pause()
+    {
+        switch ($this->state)
+        {
+            case 0:
+            case 2:
+                return true;
+
+            default:
+                return false;
         }
     }
 
