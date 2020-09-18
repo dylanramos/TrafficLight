@@ -1,5 +1,7 @@
 <?php
 
+require_once "LightStates.php";
+
 class TrafficLight
 {
     public $red;
@@ -9,38 +11,60 @@ class TrafficLight
 
     public function __construct()
     {
-        $this->state = 0;
-        $this->set_state($this->state);
+        $this->set_state(0);
     }
 
     public function set_state($state)
     {
+        $this->state = $state;
+
         switch ($state)
         {
             default:
             case 0:
-                $this->red = true;
-                $this->yellow = false;
-                $this->green = false;
+                $this->red = LightStates::ON;
+                $this->yellow = LightStates::OFF;
+                $this->green = LightStates::OFF;
                 break;
 
             case 1:
-                $this->red = true;
-                $this->yellow = true;
-                $this->green = false;
+                $this->red = LightStates::ON;
+                $this->yellow = LightStates::ON;
+                $this->green = LightStates::OFF;
                 break;
 
             case 2:
-                $this->red = false;
-                $this->yellow = false;
-                $this->green = true;
+                $this->red = LightStates::OFF;
+                $this->yellow = LightStates::OFF;
+                $this->green = LightStates::ON;
                 break;
 
             case 3:
-                $this->red = false;
-                $this->yellow = true;
-                $this->green = false;
+                $this->red = LightStates::OFF;
+                $this->yellow = LightStates::ON;
+                $this->green = LightStates::OFF;
                 break;
+        }
+    }
+
+    public function next_state()
+    {
+        switch ($this->state)
+        {
+            case 0: // Stop
+                $this->set_state(1);
+                break;
+            case 1: // Get ready
+                $this->set_state(2);
+                break;
+            case 2: // Go
+                $this->set_state(3);
+                break;
+            case 3: // Slow down
+            case 4: // HS
+                $this->set_state(0);
+                break;
+            default: // don't change
         }
     }
 
@@ -56,20 +80,5 @@ class TrafficLight
                 $this->paused = true;
                 break;
         }
-    }
-
-    public function unPauseFeasible($state)
-    {
-        switch ($state)
-        {
-            default:
-                $unPauseFeasible = false;
-
-            case 0:
-                $unPauseFeasible = true;
-                break;
-        }
-
-        return $unPauseFeasible;
     }
 }
